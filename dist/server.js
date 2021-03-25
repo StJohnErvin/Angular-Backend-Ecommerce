@@ -11,7 +11,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use("/user", userRoutes_1.userRoutes);
 app.listen(3000, function () {
-    db_1.MongoConnect.connect().then(function (req) { return console.log("DB connected"); })
+    db_1.MongoConnect.connect()
+        .then(function (req) { return console.log("DB connected"); })
         .catch(function (err) { return console.log(err); });
     console.log("Server Running Port:3000");
 });
