@@ -18,7 +18,7 @@ export class CategoryController {
 
   static saveCategories(req: Request, res: Response, next: NextFunction) {
     const categories = req.body;
-    Category.insertMany(categories, {ordered:false},(err, result) => {
+    Category.insertMany(categories, { ordered: false }, (err, result) => {
       if (err) {
         res.status(500).json({ status: "failed", message: err });
       } else {

@@ -15,7 +15,12 @@ export class UserController {
             const token = sign({ id: result._id }, private_key, {
               expiresIn: "1h",
             });
-            res.json({ status: "Success", message: "Login Success!" , data: token,  role: result.role});
+            res.json({
+              status: "Success",
+              message: "Login Success!",
+              data: token,
+              role: result.role,
+            });
           } else {
             res.json({ status: "Failed", message: "Incorrect Credentials" });
           }
@@ -82,4 +87,3 @@ export class UserController {
     });
   }
 }
-

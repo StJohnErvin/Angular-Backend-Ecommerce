@@ -7,26 +7,26 @@ var salt_Round = process.env.SALT_ROUND;
 var AddressSchema = new mongoose_1.Schema({
     addressLine1: {
         type: String,
-        required: false
+        required: false,
     },
     addressLine2: {
         type: String,
-        required: false
+        required: false,
     },
     city: {
         type: String,
-        required: false
+        required: false,
     },
     pin: {
         type: String,
-        required: false
-    }
+        required: false,
+    },
 });
 var UserSchema = new mongoose_1.Schema({
     firstName: {
         type: String,
         trim: true,
-        required: true
+        required: true,
     },
     lastName: {
         type: String,
@@ -37,33 +37,33 @@ var UserSchema = new mongoose_1.Schema({
         type: String,
         trim: true,
         required: true,
-        unique: true
+        unique: true,
     },
     password: {
         type: String,
         required: true,
         trim: true,
-        maxlength: 12
+        maxlength: 12,
     },
     mobile: {
         type: String,
         trim: true,
-        required: true
+        required: true,
     },
     dob: {
         type: Date,
         trim: true,
-        required: true
+        required: true,
     },
     addressInfo: AddressSchema,
     role: {
         type: String,
         trim: true,
         required: true,
-        default: 'User'
-    }
+        default: "User",
+    },
 });
-UserSchema.pre('save', function (next) {
+UserSchema.pre("save", function (next) {
     var user = this;
     if (user.isModified("password")) {
         var saltRound = parseInt(salt_Round);
@@ -83,4 +83,4 @@ UserSchema.pre('save', function (next) {
         next();
     }
 });
-exports.User = mongoose_1.model('User', UserSchema);
+exports.User = mongoose_1.model("User", UserSchema);
